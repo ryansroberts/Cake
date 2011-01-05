@@ -1,5 +1,0 @@
-C:\Code\Refuctobation\Refuctobation\bin\Debug\Refuctobation.dll
-C:\Code\Refuctobation\Refuctobation\bin\Debug\Refuctobation.pdb
-C:\Code\Refuctobation\Refuctobation\obj\Debug\ResolveAssemblyReference.cache
-C:\Code\Refuctobation\Refuctobation\obj\Debug\Refuctobation.dll
-C:\Code\Refuctobation\Refuctobation\obj\Debug\Refuctobation.pdb

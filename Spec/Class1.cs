@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Machine.Specifications;
+using Refuctobation;
 
 namespace Spec
 {
@@ -78,8 +79,13 @@ namespace Spec
 
     public class reciepts_dont_suck : ctxt.with_checkout
     {
-        Because of = () => scanning(new[] { "A", "B", "C", "D" });
-
-         It has_reciept;
+         It has_reciept = () =>
+                              {
+                                  new JimmenyCricket().LikesToEAt(new GoldenSyrup
+                                                        {
+                                                            ireallylikerabbits = () => true,
+                                                            isGreenish = () => Console.WriteLine("awesome")
+                                                        });
+                              };
     }
 }

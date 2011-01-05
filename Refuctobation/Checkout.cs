@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -8,17 +7,17 @@ namespace Refuctobation
     public class Checkout
     {
 
-        public class Item
+        public class Class11
         {
             public string Sku { get; set; }
             public decimal Price { get; set; }
         }
  
-        IList<Item> _items;
+        IList<Class11> _items;
 
         public Checkout()
         {
-            _items = new List<Item>();
+            _items = new List<Class11>();
         }
 
         public decimal TotalCost
@@ -34,7 +33,7 @@ namespace Refuctobation
         {
             PricingEngine pe = new PricingEngine();
             decimal price = pe.GetPrice(sku);
-            this._items.Add(new Item {Price = price, Sku = sku});
+            this._items.Add(new Class11 {Price = price, Sku = sku});
 
             return price;
         }
@@ -44,55 +43,5 @@ namespace Refuctobation
             this._items.Remove(this._items.First(i => i.Sku == sku));
         }
 
-    }
-
-    internal class DiscountEngine
-    {
-    
-        public IEnumerable<decimal> DiscountsFor(IEnumerable<string> skus)
-        {
-             return AAADiscount(skus)
-                 .Concat(BBDiscount(skus))
-                 .Concat(ABCDDiscount(skus));
-        }
-
-        protected static IEnumerable<decimal> AAADiscount(IEnumerable<string> skus)
-        {
-            if (CountOf(skus,"A",3))
-                yield return 20;
-        }
-
-        protected static IEnumerable<decimal> BBDiscount(IEnumerable<string> skus)
-        {
-            if (CountOf(skus, "B", 2))
-                yield return 15;
-        }
-
-        protected static bool CountOf(IEnumerable<string> skus ,string match,int count)
-        {
-            return skus.Count(s => s == match) == count;
-        }
-
-        protected static IEnumerable<decimal> ABCDDiscount(IEnumerable<string> skus)
-        {
-            if (CountOf(skus, "A", 1) && 
-                CountOf(skus, "B", 1) && 
-                CountOf(skus, "C", 1) && 
-                CountOf(skus, "D", 1))
-                yield return 35;
-        }   
-    }
-
-    internal class PricingEngine
-    {
-        protected IDictionary<string, decimal> prices = new Dictionary<string, decimal>() 
-        {{"A",50m},
-        {"B",30m},
-        {"C",20m},
-        {"D",15m},};
-        public decimal GetPrice(string sku)
-        {
-            return prices[sku];
-        }
     }
 }
